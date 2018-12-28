@@ -47,7 +47,10 @@ void OnTick()
    Sleep(500);
    trend = getTrend();
    if(trend!=lastTrend){
+      Print("trend: ",trend);
       Print("setOrder();");
+      if(trend==UPTREND && OrdersTotal()==0 )
+         OrderSend(Symbol(),OP_BUY,0.01,Ask,10,Ask-100*Point,Ask+180*Point);
       lastTrend = trend;
       }
    
